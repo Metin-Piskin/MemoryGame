@@ -20,8 +20,8 @@ export default Card;
 
 const styles = StyleSheet.create({
     cardUp: {
-        width: 100,
-        height: 100,
+        width: 110,
+        height: 91,
         margin: 10,
         backgroundColor: '#1e293b',
         alignItems: 'center',
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
         borderColor: '#334155'
     },
     cardDown: {
-        width: 100,
-        height: 100,
+        width: 110,
+        height: 91,
         margin: 10,
         backgroundColor: '#1e293b',
         alignItems: 'center',

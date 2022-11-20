@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stact = createNativeStackNavigator();
 
+import StartPage from './Page/StartPage';
 import GamePage from './Page/GamePage';
 import ScorePage from './Page/ScorePage';
 
@@ -11,6 +12,7 @@ const Router = () => {
     return (
         <NavigationContainer>
             <Stact.Navigator screenOptions={{ headerShown: false }}>
+                <Stact.Screen name='StartPage' component={StartPage} />
                 <Stact.Screen name='GamePage' component={GamePage} />
                 <Stact.Screen name='ScorePage' component={ScorePage} />
             </Stact.Navigator>

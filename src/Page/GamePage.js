@@ -12,9 +12,9 @@ const cards = [
     // "🥹",
     // "🗣️",
     // "🦷",
-    // "🍑",
-    // "🌪️",
-    // "🌎",
+    "🍑",
+    "🌪️",
+    "🌎",
     "🐷",
     "🪝",
     "⚛️",
@@ -43,10 +43,10 @@ const App = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(true);
 
     const uploadPostSchema = Yup.object().shape({
-        name: Yup.string().max(15, 'Caption has Reached the character limit.')
+        name: Yup.string().min(3, 'Caption has Reached the character limit.').max(15, 'Caption has Reached the character limit.')
     });
 
-    const uploadPostToFirebase = (name, score) => {
+    const uploadPostToFirebase = (name) => {
         const unsubscribe = firestore()
             .collection('table')
             .add({
@@ -90,9 +90,7 @@ const App = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
-            <Text style={styles.title}>
-                {didPlayerWin() ? "Congratulations 🎉" : "Memory"}
-            </Text>
+
             <Text style={styles.title}>Score: {score}</Text>
             <View style={styles.board}>
                 {board.map((card, index) => {
@@ -112,20 +110,11 @@ const App = ({ navigation }) => {
                 didPlayerWin() &&
                 <>
                     <StatusBar barStyle={'light-content'} backgroundColor={'#000'} />
-                    <View
-                        style={{
-                            flex: 1,
-                            backgroundColor: 'rgba(0,0,0,0.7)',
-                            zIndex: 999,
-                            position: 'absolute',
-                            height: '100%',
-                            width: '100%'
-                        }}
-                    >
+                    <View style={styles.formikcontainer}>
                         <Formik
-                            initialValues={{ name: '', score: '' }}
+                            initialValues={{ name: '' }}
                             onSubmit={(values) => {
-                                uploadPostToFirebase(values.name, values.score)
+                                uploadPostToFirebase(values.name)
                             }}
                             validationSchema={uploadPostSchema}
                             validateOnMount={true}
@@ -136,27 +125,13 @@ const App = ({ navigation }) => {
                                     transparent={true}
                                     visible={modalVisible}
                                 >
+                                    <Text style={styles.modaltitle}>
+                                        Congratulations 🎉
+                                    </Text>
                                     <View
-                                        style={{
-                                            flex: 1,
-                                            backgroundColor: 'white',
-                                            padding: 16,
-                                            marginHorizontal: 20,
-                                            height: Dimensions.get('screen').height / 3,
-                                            width: Dimensions.get('screen').width * 0.90,
-                                            position: 'absolute',
-                                            bottom: Dimensions.get('screen').width / 1.5,
-                                            zIndex: 999,
-                                            borderRadius: 20
-                                        }}
+                                        style={styles.modalcontainer}
                                     >
-                                        <Text
-                                            style={{
-                                                fontSize: 32,
-                                                color: '#0f172a',
-                                                fontWeight: '900'
-                                            }}
-                                        >
+                                        <Text style={styles.modalscortext}>
                                             Score: {score}
                                         </Text>
                                         <TextInput
@@ -165,32 +140,15 @@ const App = ({ navigation }) => {
                                             onChangeText={handleChange('name')}
                                             onBlur={handleBlur('name')}
                                             value={values.name}
-                                            style={{
-                                                borderBottomWidth: 1,
-                                                justifyContent: 'center',
-                                                borderColor: '#334155'
-                                            }}
+                                            style={styles.modalinput}
                                         />
                                         <View
-                                            style={{
-                                                flexDirection: 'row',
-                                                justifyContent: 'space-around'
-                                            }}
+                                            style={styles.modalbuttoncontainer}
                                         >
 
                                             <TouchableOpacity
                                                 onPress={resetGame}
-                                                style={{
-                                                    width: 100,
-                                                    height: 100,
-                                                    margin: 10,
-                                                    backgroundColor: '#1e293b',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    borderRadius: 25,
-                                                    borderWidth: 10,
-                                                    borderColor: '#334155'
-                                                }}
+                                                style={styles.modalbutton}
                                             >
                                                 <FontAwesome
                                                     name='repeat'
@@ -201,17 +159,7 @@ const App = ({ navigation }) => {
 
                                             <TouchableOpacity
                                                 onPress={handleSubmit}
-                                                style={{
-                                                    width: 100,
-                                                    height: 100,
-                                                    margin: 10,
-                                                    backgroundColor: '#1e293b',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    borderRadius: 25,
-                                                    borderWidth: 10,
-                                                    borderColor: '#334155'
-                                                }}
+                                                style={styles.modalbutton}
                                             >
                                                 <FontAwesome
                                                     name='save'
@@ -239,7 +187,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#0f172a',
         alignItems: 'center',
-        justifyContent: 'center'
+
     },
     title: {
         fontSize: 32,
@@ -250,5 +198,57 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center'
+    },
+    formikcontainer: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        zIndex: 1,
+        position: 'absolute',
+        height: '100%',
+        width: '100%'
+    },
+    modaltitle: {
+        fontSize: 40,
+        color: '#fff',
+        fontWeight: '900',
+        marginLeft:28,
+        marginTop:60
+    },
+    modalcontainer: {
+        flex: 1,
+        backgroundColor: 'white',
+        padding: 16,
+        marginHorizontal: 20,
+        height: Dimensions.get('screen').height / 3,
+        width: Dimensions.get('screen').width * 0.90,
+        position: 'absolute',
+        bottom: Dimensions.get('screen').width / 1.5,
+        zIndex: 999,
+        borderRadius: 20
+    },
+    modalscortext: {
+        fontSize: 32,
+        color: '#0f172a',
+        fontWeight: '900'
+    },
+    modalinput: {
+        borderBottomWidth: 1,
+        justifyContent: 'center',
+        borderColor: '#334155'
+    },
+    modalbuttoncontainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    modalbutton: {
+        width: 100,
+        height: 100,
+        margin: 10,
+        backgroundColor: '#1e293b',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 25,
+        borderWidth: 10,
+        borderColor: '#334155'
     }
 })
