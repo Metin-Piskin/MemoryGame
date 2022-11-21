@@ -4,16 +4,24 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const StartPage = ({ navigation }) => {
+
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
-            <View>
+            <View style={styles.innercontainer}>
                 <MaterialCommunityIcons
                     name='memory'
                     color={'#fff'}
                     size={200}
                 />
-                <Text style={styles.title}>Memory Game</Text>
+                <Text style={{
+                    fontSize: 32,
+                    color: '#fff',
+                    fontFamily: 'PressStart2P-Regular'
+                }}>
+                    Memory Game
+                </Text>
             </View>
             <TouchableOpacity
                 onPress={() => navigation.navigate('GamePage')}
@@ -38,10 +46,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around'
     },
+    innercontainer: {
+        alignItems: 'center'
+    },
     title: {
         fontSize: 32,
         color: '#fff',
-        fontWeight: '900'
+        fontFamily: 'Ultra'
     },
     modalbutton: {
         width: 330,

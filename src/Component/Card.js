@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     cardUp: {
         width: 110,
         height: 91,
-        margin: 10,
+        margin: 7,
         backgroundColor: '#1e293b',
         alignItems: 'center',
         justifyContent: 'center',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     cardDown: {
         width: 110,
         height: 91,
-        margin: 10,
+        margin: 7,
         backgroundColor: '#1e293b',
         alignItems: 'center',
         justifyContent: 'center',

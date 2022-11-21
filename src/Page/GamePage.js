@@ -90,8 +90,10 @@ const App = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
-
-            <Text style={styles.title}>Score: {score}</Text>
+            <View style={styles.scorecontainer}>
+                <Text style={styles.title}>Score: </Text>
+                <Text style={styles.num}>{score}</Text>
+            </View>
             <View style={styles.board}>
                 {board.map((card, index) => {
                     const isTurnedOver = selectedCards.includes(index) || matchedCards.includes(index)
@@ -125,9 +127,6 @@ const App = ({ navigation }) => {
                                     transparent={true}
                                     visible={modalVisible}
                                 >
-                                    <Text style={styles.modaltitle}>
-                                        Congratulations 🎉
-                                    </Text>
                                     <View
                                         style={styles.modalcontainer}
                                     >
@@ -189,10 +188,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
 
     },
+    scorecontainer: {
+        flexDirection: 'row'
+    },
     title: {
-        fontSize: 32,
+        fontSize: 30,
         color: '#fff',
-        fontWeight: '900'
+        fontFamily: 'PressStart2P-Regular',
+        paddingVertical: 10
+    },
+    num: {
+        fontSize: 30,
+        color: '#FDBF5E',
+        fontFamily: 'PressStart2P-Regular',
+        paddingVertical: 10
     },
     board: {
         flexDirection: 'row',
@@ -207,13 +216,6 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%'
     },
-    modaltitle: {
-        fontSize: 40,
-        color: '#fff',
-        fontWeight: '900',
-        marginLeft:28,
-        marginTop:60
-    },
     modalcontainer: {
         flex: 1,
         backgroundColor: 'white',
@@ -227,18 +229,22 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     modalscortext: {
-        fontSize: 32,
+        fontSize: 27,
         color: '#0f172a',
-        fontWeight: '900'
+        fontFamily: 'PressStart2P-Regular'
     },
     modalinput: {
         borderBottomWidth: 1,
         justifyContent: 'center',
-        borderColor: '#334155'
+        borderColor: '#334155',
+        fontFamily: 'PressStart2P-Regular',
+        justifyContent: 'center',
+        textAlignVertical: 'bottom'
     },
     modalbuttoncontainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        marginTop: 12
     },
     modalbutton: {
         width: 100,
