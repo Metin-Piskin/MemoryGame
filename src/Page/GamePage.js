@@ -8,23 +8,7 @@ import firestore from '@react-native-firebase/firestore';
 
 import Card from '../Component/Card';
 
-const cards = [
-    // "🥹",
-    // "🗣️",
-    // "🦷",
-    "🍑",
-    "🌪️",
-    "🌎",
-    "🐷",
-    "🪝",
-    "⚛️",
-    "🔑",
-    "🥕",
-    "🥑",
-    // "👻",
-    // "🥶",
-    //"🥵",
-];
+
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -35,8 +19,9 @@ function shuffle(array) {
     return array;
 }
 
-const App = ({ navigation }) => {
-    const [board, setBoard] = useState(() => shuffle([...cards, ...cards]))
+const App = ({ navigation, route }) => {
+    const { icon, text } = route.params;
+    const [board, setBoard] = useState(() => shuffle([...icon, ...icon]))
     const [selectedCards, setSelectedCards] = useState([]);
     const [matchedCards, setMatchedCards] = useState([]);
     const [score, setScore] = useState(0);
@@ -84,15 +69,16 @@ const App = ({ navigation }) => {
         setMatchedCards([]);
         setScore(0);
         setSelectedCards([]);
-        setBoard(shuffle([...cards, ...cards]))
+        setBoard(shuffle([...icon, ...icon]))
     }
 
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
             <View style={styles.scorecontainer}>
-                <Text style={styles.title}>Score: </Text>
+                <Text style={styles.title}>Score:</Text>
                 <Text style={styles.num}>{score}</Text>
+                <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.board}>
                 {board.map((card, index) => {
@@ -144,7 +130,6 @@ const App = ({ navigation }) => {
                                         <View
                                             style={styles.modalbuttoncontainer}
                                         >
-
                                             <TouchableOpacity
                                                 onPress={resetGame}
                                                 style={styles.modalbutton}
@@ -186,27 +171,35 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#0f172a',
         alignItems: 'center',
-
+        justifyContent: 'center'
     },
     scorecontainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingHorizontal: 62
     },
     title: {
         fontSize: 30,
         color: '#fff',
         fontFamily: 'PressStart2P-Regular',
-        paddingVertical: 10
+        paddingVertical: 5
     },
     num: {
         fontSize: 30,
         color: '#FDBF5E',
         fontFamily: 'PressStart2P-Regular',
-        paddingVertical: 10
+        paddingVertical: 5,
+    },
+    text: {
+        color: '#fff',
+        position: 'absolute',
+        right: 10,
+        bottom: 10,
+        zIndex: 999
     },
     board: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     formikcontainer: {
         flex: 1,
