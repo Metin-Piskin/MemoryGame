@@ -4,7 +4,7 @@ import { StyleSheet, Text, Pressable } from 'react-native';
 const Card = ({ onPress, isTurnedOver, children }) => {
     return (
         <Pressable
-            onPress={onPress}
+            onPress={isTurnedOver ? null : onPress}
             style={isTurnedOver ? styles.cardUp : styles.cardDown}
         >
             {isTurnedOver ? (

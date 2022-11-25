@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StatusBar, StyleSheet, Text, View, Modal, Alert, Dimensions, TextInput, TouchableOpacity } from 'react-native';
+import { StatusBar, StyleSheet, Text, View, Modal, Dimensions, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import firestore from '@react-native-firebase/firestore';
 
-
 import Card from '../Component/Card';
-
-
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -28,7 +25,7 @@ const App = ({ navigation, route }) => {
     const [modalVisible, setModalVisible] = useState(true);
 
     const uploadPostSchema = Yup.object().shape({
-        name: Yup.string().min(3, 'Caption has Reached the character limit.').max(15, 'Caption has Reached the character limit.')
+        name: Yup.string().min(3, 'Caption has Reached the character limit.').max(7, 'Caption has Reached the character limit.')
     });
 
     const uploadPostToFirebase = (name) => {
@@ -36,7 +33,8 @@ const App = ({ navigation, route }) => {
             .collection('table')
             .add({
                 name: name,
-                score: score
+                score: score,
+                difficulty: text
             })
             .then(() => { navigation.navigate('ScorePage') })
         return unsubscribe
@@ -76,8 +74,22 @@ const App = ({ navigation, route }) => {
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
             <View style={styles.scorecontainer}>
-                <Text style={styles.title}>Score:</Text>
-                <Text style={styles.num}>{score}</Text>
+                <View style={styles.buttoncontainer}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('StartPage')}
+                        style={styles.button}
+                    >
+                        <FontAwesome
+                            name='home'
+                            color={'#fff'}
+                            size={28}
+                        />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.scoretextcontainer}>
+                    <Text style={styles.title}>Score:</Text>
+                    <Text style={styles.num}>{score}</Text>
+                </View>
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.board}>
@@ -96,69 +108,69 @@ const App = ({ navigation, route }) => {
             </View>
             {
                 didPlayerWin() &&
-                <>
+                <View style={styles.formikcontainer}>
                     <StatusBar barStyle={'light-content'} backgroundColor={'#000'} />
-                    <View style={styles.formikcontainer}>
-                        <Formik
-                            initialValues={{ name: '' }}
-                            onSubmit={(values) => {
-                                uploadPostToFirebase(values.name)
-                            }}
-                            validationSchema={uploadPostSchema}
-                            validateOnMount={true}
-                        >
-                            {({ handleBlur, handleChange, handleSubmit, values }) => (
-                                < Modal
-                                    animationType="slide"
-                                    transparent={true}
-                                    visible={modalVisible}
+                    <Formik
+                        initialValues={{ name: '' }}
+                        onSubmit={(values) => {
+                            uploadPostToFirebase(values.name)
+                        }}
+                        validationSchema={uploadPostSchema}
+                        validateOnMount={true}
+                    >
+                        {({ handleBlur, handleChange, handleSubmit, values }) => (
+                            < Modal
+                                animationType="slide"
+                                transparent={true}
+                                visible={modalVisible}
+                            >
+                                <View
+                                    style={styles.modalcontainer}
                                 >
+                                    <Text style={styles.modalscortext}>
+                                        Score: {score}
+                                    </Text>
+
+                                    <TextInput
+                                        placeholder='Name'
+                                        placeholderTextColor={'#0f172a'}
+                                        onChangeText={handleChange('name')}
+                                        onBlur={handleBlur('name')}
+                                        value={values.name}
+                                        style={styles.modalinput}
+                                    />
+
                                     <View
-                                        style={styles.modalcontainer}
+                                        style={styles.modalbuttoncontainer}
                                     >
-                                        <Text style={styles.modalscortext}>
-                                            Score: {score}
-                                        </Text>
-                                        <TextInput
-                                            placeholder='Name'
-                                            placeholderTextColor={'#0f172a'}
-                                            onChangeText={handleChange('name')}
-                                            onBlur={handleBlur('name')}
-                                            value={values.name}
-                                            style={styles.modalinput}
-                                        />
-                                        <View
-                                            style={styles.modalbuttoncontainer}
+                                        <TouchableOpacity
+                                            onPress={resetGame}
+                                            style={styles.modalbutton}
                                         >
-                                            <TouchableOpacity
-                                                onPress={resetGame}
-                                                style={styles.modalbutton}
-                                            >
-                                                <FontAwesome
-                                                    name='repeat'
-                                                    color={'#fff'}
-                                                    size={35}
-                                                />
-                                            </TouchableOpacity>
+                                            <FontAwesome
+                                                name='repeat'
+                                                color={'#fff'}
+                                                size={35}
+                                            />
+                                        </TouchableOpacity>
 
-                                            <TouchableOpacity
-                                                onPress={handleSubmit}
-                                                style={styles.modalbutton}
-                                            >
-                                                <FontAwesome
-                                                    name='save'
-                                                    color={'#fff'}
-                                                    size={35}
-                                                />
-                                            </TouchableOpacity>
+                                        <TouchableOpacity
+                                            onPress={handleSubmit}
+                                            style={styles.modalbutton}
+                                        >
+                                            <FontAwesome
+                                                name='save'
+                                                color={'#fff'}
+                                                size={35}
+                                            />
+                                        </TouchableOpacity>
 
-                                        </View>
                                     </View>
-                                </Modal >
-                            )}
-                        </Formik>
-                    </View>
-                </>
+                                </View>
+                            </Modal >
+                        )}
+                    </Formik>
+                </View>
             }
         </View>
     )
@@ -174,8 +186,27 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     scorecontainer: {
+        width: Dimensions.get('screen').width,
         flexDirection: 'row',
-        paddingHorizontal: 62
+        justifyContent: 'space-evenly'
+    },
+    buttoncontainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
+    button: {
+        width: 40,
+        height: 40,
+        backgroundColor: '#1e293b',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+        borderWidth: 5,
+        borderColor: '#334155'
+    },
+    scoretextcontainer: {
+        flexDirection: 'row'
     },
     title: {
         fontSize: 30,
@@ -191,10 +222,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#fff',
-        position: 'absolute',
-        right: 10,
-        bottom: 10,
-        zIndex: 999
+        alignSelf: 'center'
     },
     board: {
         flexDirection: 'row',
@@ -202,22 +230,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     formikcontainer: {
-        flex: 1,
+        height: Dimensions.get('screen').height,
         backgroundColor: 'rgba(0,0,0,0.7)',
-        zIndex: 1,
         position: 'absolute',
-        height: '100%',
-        width: '100%'
+        width: Dimensions.get('screen').width,
     },
     modalcontainer: {
-        flex: 1,
         backgroundColor: 'white',
         padding: 16,
         marginHorizontal: 20,
         height: Dimensions.get('screen').height / 3,
         width: Dimensions.get('screen').width * 0.90,
         position: 'absolute',
-        bottom: Dimensions.get('screen').width / 1.5,
+        top: Dimensions.get('screen').width / 2,
         zIndex: 999,
         borderRadius: 20
     },

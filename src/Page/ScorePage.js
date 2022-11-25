@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, FlatList, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -15,22 +15,46 @@ const ScorePage = ({ navigation }) => {
                     { id: post.id, ...post.data() })))
             })
     }, [])
+
+
+    function sortArray(array) {
+        var temp = 0;
+        for (var i = 0; i < array.length; i++) {
+            for (var j = i; j < array.length; j++) {
+                if (array[j] < array[i]) {
+                    temp = array[j];
+                    array[j] = array[i];
+                    array[i] = temp;
+                }
+            }
+        }
+        return array;
+    }
+
+    console.log(sortArray(posts.map((post) => post.score)));
+
+
     return (
         <>
             <ScrollView style={styles.container}>
                 <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
                 <View style={styles.innercontainer}>
-                    <Text style={styles.text}>İndex</Text>
-                    <Text style={styles.text}>Name</Text>
-                    <Text style={styles.text}>Score</Text>
+                    <Text style={styles.textindex}>İ</Text>
+                    <Text style={styles.textName}>Name</Text>
+                    <Text style={styles.textDifficulty}>Difficulty</Text>
+                    <Text style={styles.textScore}>Scor</Text>
                 </View>
-                {posts.map((post, index) =>
-                    <Score
-                        key={index}
-                        index={index}
-                        post={post}
-                    />
-                )}
+
+                {
+                    posts.map((post, index) =>
+                        < Score
+                            key={index}
+                            index={index}
+                            post={post}
+                        />
+                    )
+                }
+
             </ScrollView>
             <View style={styles.buttoncontainer}>
                 <TouchableOpacity
@@ -59,8 +83,38 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around'
     },
-    text: {
-        flex: 1,
+    textindex: {
+        paddingHorizontal: 12,
+        borderWidth: 1,
+        fontFamily: 'PressStart2P-Regular',
+        textAlign: 'center',
+        textAlignVertical: 'bottom',
+        paddingVertical: 10,
+        color: '#fff',
+        borderColor: '#fff'
+    },
+    textName: {
+        paddingHorizontal: 25,
+        borderWidth: 1,
+        fontFamily: 'PressStart2P-Regular',
+        textAlign: 'center',
+        textAlignVertical: 'bottom',
+        paddingVertical: 10,
+        color: '#fff',
+        borderColor: '#fff'
+    },
+    textDifficulty: {
+        paddingHorizontal: 18,
+        borderWidth: 1,
+        fontFamily: 'PressStart2P-Regular',
+        textAlign: 'center',
+        textAlignVertical: 'bottom',
+        paddingVertical: 10,
+        color: '#fff',
+        borderColor: '#fff'
+    },
+    textScore: {
+        paddingHorizontal: 10,
         borderWidth: 1,
         fontFamily: 'PressStart2P-Regular',
         textAlign: 'center',
@@ -70,9 +124,6 @@ const styles = StyleSheet.create({
         borderColor: '#fff'
     },
     buttoncontainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 12,
         position: 'absolute',
         bottom: 20,
         right: 10

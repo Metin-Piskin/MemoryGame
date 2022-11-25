@@ -27,7 +27,7 @@ const StartPage = ({ navigation }) => {
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
             <View style={styles.innercontainer}>
                 <MaterialCommunityIcons
-                    name='memory'
+                    name='react'
                     color={'#fff'}
                     size={200}
                 />
@@ -35,19 +35,24 @@ const StartPage = ({ navigation }) => {
                     Memory Game
                 </Text>
             </View>
-            {
-                title.map((title, index) => {
-                    return (
-                        <TouchableOpacity
-                            onPress={() => StartPress(title.icon, title.text)}
-                            style={styles.modalbutton}
-                            key={index}
-                        >
-                            <Text style={styles.text}>{title.text}</Text>
-                        </TouchableOpacity>
-                    );
-                })
-            }
+            <View style={styles.buttoncontainer}>
+                {
+                    title.map((title, index) => {
+                        return (
+                            <TouchableOpacity
+                                onPress={() => StartPress(title.icon, title.text)}
+                                style={styles.modalbutton}
+                                key={index}
+                            >
+                                <Text style={styles.text}>{title.text}</Text>
+                            </TouchableOpacity>
+                        );
+                    })
+                }
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('ScorePage')}>
+                <Text>TAb</Text>
+            </TouchableOpacity>
         </View >
     )
 }
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#0f172a',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-evenly'
     },
     innercontainer: {
         alignItems: 'center'
@@ -69,20 +74,25 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'PressStart2P-Regular'
     },
+    buttoncontainer: {
+
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     modalbutton: {
         width: 165,
-        height: 60,
+        paddingVertical: 10,
         margin: 10,
         backgroundColor: '#1e293b',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 30,
+        borderRadius: 10,
         borderWidth: 10,
         borderColor: '#334155'
     },
     text: {
         color: '#fff',
         fontFamily: 'PressStart2P-Regular',
-        paddingTop:5
+        paddingTop: 5
     }
 })
