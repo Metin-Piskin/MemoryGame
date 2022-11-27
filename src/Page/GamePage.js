@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import firestore from '@react-native-firebase/firestore';
 
 import Card from '../Component/Card';
+import LinearGradient from 'react-native-linear-gradient';
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -25,12 +26,12 @@ const App = ({ navigation, route }) => {
     const [modalVisible, setModalVisible] = useState(true);
 
     const uploadPostSchema = Yup.object().shape({
-        name: Yup.string().min(3, 'Caption has Reached the character limit.').max(7, 'Caption has Reached the character limit.')
+        name: Yup.string().max(10, 'Caption has Reached the character limit.')
     });
 
     const uploadPostToFirebase = (name) => {
         const unsubscribe = firestore()
-            .collection('table')
+            .collection(`table`)
             .add({
                 name: name,
                 score: score,
@@ -74,18 +75,26 @@ const App = ({ navigation, route }) => {
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
             <View style={styles.scorecontainer}>
-                <View style={styles.buttoncontainer}>
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('StartPage')}
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('StartPage')}
+                    style={styles.buttoncontainer}
+                >
+                    <LinearGradient
                         style={styles.button}
+                        colors={[
+                            '#1e293b',
+                            '#1e293b',
+                            '#334155',
+                            '#334155',
+                        ]}
                     >
                         <FontAwesome
                             name='home'
                             color={'#fff'}
                             size={28}
                         />
-                    </TouchableOpacity>
-                </View>
+                    </LinearGradient>
+                </TouchableOpacity>
                 <View style={styles.scoretextcontainer}>
                     <Text style={styles.title}>Score:</Text>
                     <Text style={styles.num}>{score}</Text>
@@ -127,42 +136,78 @@ const App = ({ navigation, route }) => {
                                 <View
                                     style={styles.modalcontainer}
                                 >
-                                    <Text style={styles.modalscortext}>
-                                        Score: {score}
-                                    </Text>
+                                    <View style={styles.scoretextcontainer}>
+                                        <Text style={styles.modalscortext}>
+                                            Score:
+                                        </Text>
+                                        <Text style={styles.modalscor}>
+                                            {score}
+                                        </Text>
+                                    </View>
 
-                                    <TextInput
-                                        placeholder='Name'
-                                        placeholderTextColor={'#0f172a'}
-                                        onChangeText={handleChange('name')}
-                                        onBlur={handleBlur('name')}
-                                        value={values.name}
-                                        style={styles.modalinput}
-                                    />
+                                    <View
+                                        style={
+                                            {
+                                                borderBottomWidth: 1,
+                                                borderColor:
+                                                    values.name.length <= 10
+                                                        ? '#334155'
+                                                        : '#FF0000',
+                                            }
+                                        }
+                                    >
+                                        <TextInput
+                                            placeholder='Name'
+                                            placeholderTextColor={'#0f172a'}
+                                            onChangeText={handleChange('name')}
+                                            onBlur={handleBlur('name')}
+                                            textContentType={'name'}
+                                            value={values.name}
+                                            style={styles.modalinput}
+                                        />
+                                    </View>
 
                                     <View
                                         style={styles.modalbuttoncontainer}
                                     >
                                         <TouchableOpacity
                                             onPress={resetGame}
-                                            style={styles.modalbutton}
                                         >
-                                            <FontAwesome
-                                                name='repeat'
-                                                color={'#fff'}
-                                                size={35}
-                                            />
+                                            <LinearGradient
+                                                style={styles.modalbutton}
+                                                colors={[
+                                                    '#1e293b',
+                                                    '#1e293b',
+                                                    '#334155',
+                                                    '#334155',
+                                                ]}
+                                            >
+                                                <FontAwesome
+                                                    name='repeat'
+                                                    color={'#fff'}
+                                                    size={35}
+                                                />
+                                            </LinearGradient>
                                         </TouchableOpacity>
 
                                         <TouchableOpacity
                                             onPress={handleSubmit}
-                                            style={styles.modalbutton}
                                         >
-                                            <FontAwesome
-                                                name='save'
-                                                color={'#fff'}
-                                                size={35}
-                                            />
+                                            <LinearGradient
+                                                style={styles.modalbutton}
+                                                colors={[
+                                                    '#1e293b',
+                                                    '#1e293b',
+                                                    '#334155',
+                                                    '#334155',
+                                                ]}
+                                            >
+                                                <FontAwesome
+                                                    name='save'
+                                                    color={'#fff'}
+                                                    size={35}
+                                                />
+                                            </LinearGradient>
                                         </TouchableOpacity>
 
                                     </View>
@@ -172,7 +217,7 @@ const App = ({ navigation, route }) => {
                     </Formik>
                 </View>
             }
-        </View>
+        </View >
     )
 }
 
@@ -202,8 +247,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5,
-        borderWidth: 5,
-        borderColor: '#334155'
+        //borderWidth: 5,
+        //borderColor: '#334155'
     },
     scoretextcontainer: {
         flexDirection: 'row'
@@ -251,10 +296,15 @@ const styles = StyleSheet.create({
         color: '#0f172a',
         fontFamily: 'PressStart2P-Regular'
     },
+    modalscor: {
+        fontSize: 27,
+        color: '#FDBF5E',
+        fontFamily: 'PressStart2P-Regular'
+    },
     modalinput: {
-        borderBottomWidth: 1,
+        //borderBottomWidth: 1,
         justifyContent: 'center',
-        borderColor: '#334155',
+        //borderColor: '#334155',
         fontFamily: 'PressStart2P-Regular',
         justifyContent: 'center',
         textAlignVertical: 'bottom'
@@ -272,7 +322,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 25,
-        borderWidth: 10,
-        borderColor: '#334155'
+        // borderWidth: 10,
+        //borderColor: '#334155'
     }
 })

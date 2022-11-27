@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const title = [
     Easy = {
@@ -25,12 +26,25 @@ const StartPage = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
-            <View style={styles.innercontainer}>
-                <MaterialCommunityIcons
-                    name='react'
-                    color={'#fff'}
-                    size={200}
-                />
+
+            <View
+                style={styles.innercontainer}
+            >
+                <LinearGradient
+                    style={styles.LinearGradientcontainer}
+                    colors={[
+                        '#1e293b',
+                        '#1e293b',
+                        '#0f172a',
+                        '#0f172a',
+                    ]}
+                >
+                    <MaterialCommunityIcons
+                        name='react'
+                        color={'#fff'}
+                        size={200}
+                    />
+                </LinearGradient>
                 <Text style={styles.title}>
                     Memory Game
                 </Text>
@@ -41,17 +55,43 @@ const StartPage = ({ navigation }) => {
                         return (
                             <TouchableOpacity
                                 onPress={() => StartPress(title.icon, title.text)}
-                                style={styles.modalbutton}
                                 key={index}
                             >
-                                <Text style={styles.text}>{title.text}</Text>
+                                <LinearGradient
+                                    style={styles.modalbutton}
+                                    colors={[
+                                        '#1e293b',
+                                        '#1e293b',
+                                        '#334155',
+                                        '#334155',
+                                    ]}
+                                >
+                                    <Text style={styles.text}>{title.text}</Text>
+                                </LinearGradient>
                             </TouchableOpacity>
                         );
                     })
                 }
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate('ScorePage')}>
-                <Text>TAb</Text>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('ScorePage')}
+                style={styles.tablebutton}
+            >
+                <LinearGradient
+                    style={styles.table}
+                    colors={[
+                        '#1e293b',
+                        '#1e293b',
+                        '#334155',
+                        '#334155',
+                    ]}
+                >
+                    <FontAwesome5
+                        name='table'
+                        color={'#fff'}
+                        size={30}
+                    />
+                </LinearGradient>
             </TouchableOpacity>
         </View >
     )
@@ -67,7 +107,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly'
     },
     innercontainer: {
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 20
+    },
+    LinearGradientcontainer: {
+        padding: 20,
+        borderRadius: 120
     },
     title: {
         fontSize: 32,
@@ -87,12 +132,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-        borderWidth: 10,
-        borderColor: '#334155'
+        //borderWidth: 10,
+        //borderColor: '#334155'
     },
     text: {
         color: '#fff',
         fontFamily: 'PressStart2P-Regular',
         paddingTop: 5
+    },
+    tablebutton: {
+        position: 'absolute',
+        right: 30,
+        bottom: 40
+    },
+    table: {
+        padding: 10,
+        borderRadius: 10
     }
 })
