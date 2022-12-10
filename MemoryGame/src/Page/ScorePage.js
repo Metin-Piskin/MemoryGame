@@ -8,15 +8,23 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const ScorePage = ({ navigation }) => {
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         firestore()
-            .collectionGroup('table')
-            .onSnapshot(snapshot => {
+            .collection('table')
+            .orderBy('score').onSnapshot(snapshot => {
                 setPosts(snapshot?.docs.map(post => (
                     { ...post.data() })))
-            })
+            });
+        setLoading(false);
     }, [])
+
+    //console.log(posts)
+    if (loading) {
+        return <Text>Data is loading...</Text>
+    }
 
     return (
         <>
@@ -28,15 +36,7 @@ const ScorePage = ({ navigation }) => {
                     <Text style={styles.textScore}>Scor</Text>
                 </View>
 
-                {
-                    posts.map((post, index) =>
-                        < Score
-                            key={index}
-                            index={index}
-                            post={post}
-                        />
-                    )
-                }
+                {posts.map((post, index) => < Score post={post} key={index} />)}
 
             </ScrollView>
             <TouchableOpacity
