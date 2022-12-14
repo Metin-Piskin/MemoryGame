@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#1e293b",
+      "borderColor": "#334155",
+      "borderRadius": 25,
+      "borderWidth": 10,
+      "height": 91,
+      "justifyContent": "center",
+      "margin": 7,
+      "width": 110,
+    }
+  }
+  testID="card-pressable"
+>
+  <Text
+    style={
+      {
+        "color": "#334155",
+        "fontSize": 46,
+      }
+    }
+  >
+    ?
+  </Text>
+</View>
+`;
