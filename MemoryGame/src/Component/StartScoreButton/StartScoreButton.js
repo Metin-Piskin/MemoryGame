@@ -9,10 +9,12 @@ const StartScoreButton = ({ onPress }) => {
     return (
         <TouchableOpacity
             onPress={onPress}
+            testID={'start-score-button-touchableopacity'}
             style={styles.tablebutton}
         >
             <LinearGradient
                 style={styles.table}
+                testID={'start-score-button-lineargradient'}
                 colors={[
                     '#1e293b',
                     '#1e293b',

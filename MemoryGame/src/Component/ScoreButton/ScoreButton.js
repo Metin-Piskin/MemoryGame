@@ -8,11 +8,13 @@ import styles from './ScoreButton-style';
 const ScoreButton = ({ onPress }) => {
     return (
         <TouchableOpacity
+            testID='score-button-touchableopacity'
             onPress={onPress}
             style={styles.buttoncontainer}
         >
             <LinearGradient
                 style={styles.button}
+                testID='score-button-lineargradient'
                 colors={[
                     '#1e293b',
                     '#1e293b',

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "bottom": 20,
+      "left": 65,
+      "opacity": 1,
+      "position": "absolute",
+    }
+  }
+  testID="score-button-touchableopacity"
+>
+  <LinearGradient
+    colors={
+      [
+        "#1e293b",
+        "#1e293b",
+        "#334155",
+        "#334155",
+      ]
+    }
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#1e293b",
+        "borderRadius": 12,
+        "height": 50,
+        "justifyContent": "center",
+        "margin": 10,
+        "width": 50,
+      }
+    }
+    testID="score-button-lineargradient"
+  >
+    <FontAwesome
+      color="#fff"
+      name="home"
+      size={28}
+    />
+  </LinearGradient>
+</View>
+`;

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    {
+      "flexDirection": "row",
+      "justifyContent": "space-around",
+    }
+  }
+  testID="score-table-innercontainer"
+>
+  <Text
+    style={
+      {
+        "borderColor": "#fff",
+        "borderWidth": 1,
+        "color": "#fff",
+        "fontFamily": "PressStart2P-Regular",
+        "paddingHorizontal": 40,
+        "paddingVertical": 10,
+        "textAlign": "center",
+        "textAlignVertical": "bottom",
+      }
+    }
+    testID="score-table-textName"
+  >
+    Name
+  </Text>
+  <Text
+    style={
+      {
+        "borderColor": "#fff",
+        "borderWidth": 1,
+        "color": "#fff",
+        "fontFamily": "PressStart2P-Regular",
+        "paddingHorizontal": 18,
+        "paddingVertical": 10,
+        "textAlign": "center",
+        "textAlignVertical": "bottom",
+      }
+    }
+    testID="score-table-textDifficulty"
+  >
+    Difficulty
+  </Text>
+  <Text
+    style={
+      {
+        "borderColor": "#fff",
+        "borderWidth": 1,
+        "color": "#fff",
+        "fontFamily": "PressStart2P-Regular",
+        "paddingHorizontal": 15,
+        "paddingVertical": 10,
+        "textAlign": "center",
+        "textAlignVertical": "bottom",
+      }
+    }
+    testID="score-table-textScore"
+  >
+    Scor
+  </Text>
+</View>
+`;

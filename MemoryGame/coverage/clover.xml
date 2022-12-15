@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1671019314705" clover="3.2.0">
-  <project timestamp="1671019314705" name="All files">
-    <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2" elements="12" coveredelements="12" complexity="0" loc="4" ncloc="4" packages="2" files="6" classes="6"/>
-    <package name="Card">
+<coverage generated="1671103375413" clover="3.2.0">
+  <project timestamp="1671103375414" name="All files">
+    <metrics statements="18" coveredstatements="15" conditionals="8" coveredconditionals="8" methods="10" coveredmethods="7" elements="36" coveredelements="30" complexity="0" loc="18" ncloc="18" packages="6" files="18" classes="18"/>
+    <package name="Component.Card">
       <metrics statements="2" coveredstatements="2" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
       <file name="Card-style.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\Card\Card-style.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -16,7 +16,7 @@
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="Score">
+    <package name="Component.Score">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="Score-style.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\Score\Score-style.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -27,6 +27,68 @@
         <line num="7" count="5" type="stmt"/>
       </file>
       <file name="index.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\Score\index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="Component.StartButtons">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="StartButtons-style.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartButtons\StartButtons-style.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="StartButtons.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartButtons\StartButtons.js">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="14" type="stmt"/>
+      </file>
+      <file name="index.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartButtons\index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="Component.StartHeader">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="StartHeader-style.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartHeader\StartHeader-style.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="StartHeader.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartHeader\StartHeader.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+      </file>
+      <file name="index.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartHeader\index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="Component.StartScoreButton">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="StartScoreButton-style.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartScoreButton\StartScoreButton-style.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="StartScoreButton.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartScoreButton\StartScoreButton.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+      </file>
+      <file name="index.js" path="C:\KOD\ReactNative\MemoryGame\src\Component\StartScoreButton\index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="Page.StartPage">
+      <metrics statements="8" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+      <file name="StartPage-style.js" path="C:\KOD\ReactNative\MemoryGame\src\Page\StartPage\StartPage-style.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="StartPage.js" path="C:\KOD\ReactNative\MemoryGame\src\Page\StartPage\StartPage.js">
+        <metrics statements="8" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="36" count="9" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+      </file>
+      <file name="index.js" path="C:\KOD\ReactNative\MemoryGame\src\Page\StartPage\index.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>

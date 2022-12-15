@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "borderRadius": 20,
+    }
+  }
+  testID="start-header-container"
+>
+  <LinearGradient
+    colors={
+      [
+        "#1e293b",
+        "#1e293b",
+        "#0f172a",
+        "#0f172a",
+      ]
+    }
+    style={
+      {
+        "borderRadius": 120,
+        "padding": 20,
+      }
+    }
+    testID="start-header-LinearGradientcontainer"
+  >
+    <MaterialCommunityIcons
+      color="#fff"
+      name="react"
+      size={200}
+    />
+  </LinearGradient>
+  <Text
+    style={
+      {
+        "color": "#fff",
+        "fontFamily": "PressStart2P-Regular",
+        "fontSize": 32,
+      }
+    }
+    testID="start-header-title"
+  >
+    Memory Game
+  </Text>
+</View>
+`;

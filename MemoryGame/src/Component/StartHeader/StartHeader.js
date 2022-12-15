@@ -7,11 +7,10 @@ import styles from './StartHeader-style';
 
 const StartHeader = () => {
     return (
-        <View
-            style={styles.innercontainer}
-        >
+        <View style={styles.innercontainer} testID={'start-header-container'}>
             <LinearGradient
                 style={styles.LinearGradientcontainer}
+                testID={'start-header-LinearGradientcontainer'}
                 colors={[
                     '#1e293b',
                     '#1e293b',
@@ -25,7 +24,7 @@ const StartHeader = () => {
                     size={200}
                 />
             </LinearGradient>
-            <Text style={styles.title}>
+            <Text style={styles.title} testID={'start-header-title'}>
                 Memory Game
             </Text>
         </View>
