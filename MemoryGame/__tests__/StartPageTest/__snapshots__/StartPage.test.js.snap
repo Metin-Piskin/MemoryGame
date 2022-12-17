@@ -1,0 +1,270 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#0f172a",
+      "flex": 1,
+      "justifyContent": "space-evenly",
+    }
+  }
+  testID="start-page-container"
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "borderRadius": 20,
+      }
+    }
+    testID="start-header-container"
+  >
+    <LinearGradient
+      colors={
+        [
+          "#1e293b",
+          "#1e293b",
+          "#0f172a",
+          "#0f172a",
+        ]
+      }
+      style={
+        {
+          "borderRadius": 120,
+          "padding": 20,
+        }
+      }
+      testID="start-header-LinearGradientcontainer"
+    >
+      <MaterialCommunityIcons
+        color="#fff"
+        name="react"
+        size={200}
+      />
+    </LinearGradient>
+    <Text
+      style={
+        {
+          "color": "#fff",
+          "fontFamily": "PressStart2P-Regular",
+          "fontSize": 32,
+        }
+      }
+      testID="start-header-title"
+    >
+      Memory Game
+    </Text>
+  </View>
+  <View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+      testID="start-buttons-TouchableOpacity"
+    >
+      <LinearGradient
+        colors={
+          [
+            "#1e293b",
+            "#1e293b",
+            "#334155",
+            "#334155",
+          ]
+        }
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1e293b",
+            "borderRadius": 10,
+            "justifyContent": "center",
+            "margin": 10,
+            "paddingVertical": 10,
+            "width": 165,
+          }
+        }
+        testID="start-buttons-LinearGradient"
+      >
+        <Text
+          style={
+            {
+              "color": "#fff",
+              "fontFamily": "PressStart2P-Regular",
+              "paddingTop": 5,
+            }
+          }
+          testID="start-buttons-title"
+        >
+          Easy
+        </Text>
+      </LinearGradient>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+      testID="start-buttons-TouchableOpacity"
+    >
+      <LinearGradient
+        colors={
+          [
+            "#1e293b",
+            "#1e293b",
+            "#334155",
+            "#334155",
+          ]
+        }
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1e293b",
+            "borderRadius": 10,
+            "justifyContent": "center",
+            "margin": 10,
+            "paddingVertical": 10,
+            "width": 165,
+          }
+        }
+        testID="start-buttons-LinearGradient"
+      >
+        <Text
+          style={
+            {
+              "color": "#fff",
+              "fontFamily": "PressStart2P-Regular",
+              "paddingTop": 5,
+            }
+          }
+          testID="start-buttons-title"
+        >
+          Normal
+        </Text>
+      </LinearGradient>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+      testID="start-buttons-TouchableOpacity"
+    >
+      <LinearGradient
+        colors={
+          [
+            "#1e293b",
+            "#1e293b",
+            "#334155",
+            "#334155",
+          ]
+        }
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#1e293b",
+            "borderRadius": 10,
+            "justifyContent": "center",
+            "margin": 10,
+            "paddingVertical": 10,
+            "width": 165,
+          }
+        }
+        testID="start-buttons-LinearGradient"
+      >
+        <Text
+          style={
+            {
+              "color": "#fff",
+              "fontFamily": "PressStart2P-Regular",
+              "paddingTop": 5,
+            }
+          }
+          testID="start-buttons-title"
+        >
+          Hard
+        </Text>
+      </LinearGradient>
+    </View>
+  </View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "bottom": 40,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 30,
+      }
+    }
+    testID="start-score-button-touchableopacity"
+  >
+    <LinearGradient
+      colors={
+        [
+          "#1e293b",
+          "#1e293b",
+          "#334155",
+          "#334155",
+        ]
+      }
+      style={
+        {
+          "borderRadius": 10,
+          "padding": 10,
+        }
+      }
+      testID="start-score-button-lineargradient"
+    >
+      <FontAwesome5
+        color="#fff"
+        name="table"
+        size={30}
+      />
+    </LinearGradient>
+  </View>
+</View>
+`;

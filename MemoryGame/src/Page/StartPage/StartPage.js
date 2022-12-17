@@ -27,14 +27,15 @@ const StartPage = ({ navigation }) => {
         navigation.navigate("GamePage", { icon, text });
     }
     return (
-        <View style={styles.container} testID={'start-page-container'}>
+        <View style={styles.container} testID='start-page-container'>
             <StatusBar barStyle={'light-content'} backgroundColor={'#0f172a'} />
             <StartHeader />
-            <View style={styles.buttoncontainer} testID={'start-page-button-container'}>
+            <View>
                 {
                     title.map((title, index) => {
                         return (
                             <StartButtons
+                                key={index}
                                 index={index}
                                 title={title.text}
                                 onPress={() => StartPress(title.icon, title.text)}

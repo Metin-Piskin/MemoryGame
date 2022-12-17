@@ -7,9 +7,4 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
-    buttoncontainer: {
-
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
 })

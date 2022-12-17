@@ -19,10 +19,3 @@ test('should render default theme style', () => {
 
     expect(StartPageContainerStyle).toMatchObject(StartPageStyles.container);
 });
-
-test('should render default theme style', () => {
-    const comp = render(<StartPage />);
-    const StartPageContainerStyle = comp.getByTestId('start-page-button-container').props.style;
-
-    expect(StartPageContainerStyle).toMatchObject(StartPageStyles.buttoncontainer);
-});
